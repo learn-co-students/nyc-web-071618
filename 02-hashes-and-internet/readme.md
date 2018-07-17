@@ -1,7 +1,7 @@
 # Hashes and the Internet
 
 ### Lecture
-(Video)[https://youtu.be/BN4KE3ps6gc]
+[Video](https://youtu.be/BN4KE3ps6gc)
 
 ### Define
 
