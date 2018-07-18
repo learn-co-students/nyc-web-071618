@@ -1,5 +1,8 @@
 # Intro to Object Orientation
 
+### Lecture
+[Video](https://youtu.be/gjVcYv_qm6s)
+
 ## Objectives
 
 * Define `object` in programming domain
