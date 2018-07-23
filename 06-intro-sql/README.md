@@ -6,19 +6,19 @@
 4. Click the tab that says 'Execute SQL'. Type SQL queries in the box above. Press the play button. See the results of that query in the box below
 
 ## What is SQL?
-Structured Query Language
-Responsible for interacting with databases
+- Structured Query Language
+- Responsible for interacting with databases
 
 ## What is SQL for?
-Store & persist information
-Manipulate that information
+- Store & persist information
+- Manipulate that information
 
 ## What kinds of operations can we do in SQL?
 **CRUD**
-Create data
-Read data
-Update data
-Delete data
+1. Create data
+2. Read data
+3. Update data
+4. Delete data
 
 ## What is SQLite3?
 Relational database (handles relationships between tables/models)
