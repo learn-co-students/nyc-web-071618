@@ -42,16 +42,16 @@ The model represents the data, and does nothing else. The model does NOT depend 
 
 Think of your MVC app as a restaurant. The model is the food being made in the kitchen, this is the meat of the experience/app. The controller is the restaurant's staff, they handle the experience, prepare the food, and are your first contact if you need anything. The view is you, and your experience. You do not see inside the kitchen, nor do you have visibility on what happens to give you the experience you get. If you want more information, you can always talk to the staff, but they have rules about how much or how little you get to do or see.
 
-![](https://github.com/flatiron-school/education-team-wiki/blob/master/assets/m2_sinatra_request.jpg)
+![](https://raw.githubusercontent.com/flatiron-school/education-team-wiki/master/assets/m2_sinatra_request.jpg?token=ASv3_VCJPikCHqKAY9-N5fpeCfN4cXfXks5bcOkgwA%3D%3D)
 
 
 ### CRUD, URLs, and REST
 
 
-![](https://github.com/flatiron-school/education-team-wiki/assets/m2_sinatra_crud.jpg)
+![](https://raw.githubusercontent.com/flatiron-school/education-team-wiki/master/assets/m2_sinatra_rest.png?token=ASv3_UMqPg_ga50RpTf6C2Zn4DfeXnt9ks5bcOknwA%3D%3D)
 
 
-![](https://github.com/flatiron-school/education-team-wiki/assets/m2_sinatra_rest.png)
+![](https://raw.githubusercontent.com/flatiron-school/education-team-wiki/master/assets/m2_sinatra_crud.jpg?token=ASv3_TsOof_cj9wsrgmZl6qoQF0mA5jNks5bcOkkwA%3D%3D)
 
 _Note: One thing that helps justify why things are the way they are, is that REST methods try their best to minimize the number of URLs but maximizing functionality. This is why we overload on the same URLs._
 
@@ -63,7 +63,7 @@ Sinatra has the added benefit of giving us convention on modularizing our code, 
 
 * Params in requests
 
-  ![](https://github.com/flatiron-school/education-team-wiki/assets/m2_sinatra_routing_code.jpg)
+  ![](https://raw.githubusercontent.com/flatiron-school/education-team-wiki/master/assets/m2_sinatra_routing_code.jpg?token=ASv3_RTCvN-lIxZWRWrw0e0m7GF5tT4Pks5bcOkrwA%3D%3D)
 
 * Nested erb naming \(with directories\)
 
