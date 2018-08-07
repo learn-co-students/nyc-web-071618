@@ -7,7 +7,7 @@ class BooksController < ApplicationController
 
   get '/books/new' do
     # this will render the form to create a book
-    erb :'books/new'
+    erb :"books/new"
   end
 
   get '/books/:id' do
@@ -36,7 +36,7 @@ class BooksController < ApplicationController
 
   delete '/books/:id' do
     Book.destroy(params[:id])
-    redirect '/books'
+    redirect "/books"
   end
 
 end
