@@ -1,0 +1,24 @@
+<h1>I SEE U R TRYING TO CREATE A NEW TURKEY</h1>
+
+<% if @turkey.errors.any? %>
+  <% @turkey.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+<% end %>
+
+<%= form_for(@turkey) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :weight %>
+  <%= f.number_field :weight %>
+
+  <%= f.label :giblets %>
+  <%= f.text_field :giblets %>
+
+  <%= f.label :alive %>
+  <%= f.check_box :alive %>
+
+  <%= f.submit %>
+
+<% end %>
