@@ -1,0 +1,10 @@
+<h1>Viewing Details for a Pizza</h1>
+
+<% if flash[:notice] %>
+  <h3><%= flash[:notice] %></h3>
+<% end %>
+
+<p>Toppings: <%= @pizza.toppings %></p>
+<p>Size: <%= @pizza.size %></p>
+<p>Tasty? <%= @pizza.tasty %></p>
+<p>Price: $<%= @pizza.price %></p>

@@ -1,0 +1,17 @@
+<h1>Creating a New Pizza</h1>
+
+<%= form_for @pizza do |f| %>
+  <%= f.label :toppings %>
+  <%= f.text_field :toppings %>
+
+  <%= f.label :tasty %>
+  <%= f.check_box :tasty %>
+
+  <%= f.label :size %>
+  <%= f.text_field :size %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  <%= f.submit %>
+<% end %>

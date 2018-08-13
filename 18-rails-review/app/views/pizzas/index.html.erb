@@ -1,0 +1,9 @@
+<h1>Pizza Index Page</h1>
+
+<ul>
+  <% @pizzas.each do |pizza| %>
+    <li><%= link_to(pizza.toppings, pizza_path(pizza)) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Create a New Pizza', new_pizza_path %>

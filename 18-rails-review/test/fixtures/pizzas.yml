@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  toppings: MyString
+  tasty: false
+  size: MyString
+  price: 1
+
+two:
+  toppings: MyString
+  tasty: false
+  size: MyString
+  price: 1
