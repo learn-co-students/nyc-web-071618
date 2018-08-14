@@ -1,0 +1,33 @@
+<h1>Create a New Cow!</h1>
+
+<%= form_for @cow do |f| %>
+<ul>
+<% if @cow.errors.any? %>
+    <% @cow.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+<% end %>
+</ul>
+
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :num_spots %>
+  <%= f.number_field :num_spots %>
+
+  <%= f.label :weight %>
+  <%= f.number_field :weight %>
+
+  <%= f.label :tipped %>
+  <%= f.check_box :tipped %>
+
+  <%= f.label :chocolate_milk %>
+  <%= f.check_box :chocolate_milk %>
+
+<!-- collection select needs: a method to call on @cow, the collection to fill the dropdown with, the method/data i want from EACH farmer (item in my collection), the text method––what will my user see -->
+  <%= f.collection_select(:farmer_id, Farmer.all, :id, :name) %>
+  <!-- collection select will iterate over Farmer.all and create dropdown options for each farmer, where the value is the farmer id and the text that the user sees is the farmer name -->
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,21 @@
+<h1>Editing Details for <%= @farmer.name %></h1>
+
+<%= form_for @farmer do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+<br>
+  <%= f.fields_for :cows do |cows_form| %>
+    <%= cows_form.label :name %>
+    <%= cows_form.text_field :name %>
+
+    <%= cows_form.label :num_spots %>
+    <%= cows_form.text_field :num_spots %>
+
+    <%= cows_form.label :weight %>
+    <%= cows_form.text_field :weight %>
+    <br>
+  <% end %>
+
+
+  <%= f.submit %>
+<% end %>

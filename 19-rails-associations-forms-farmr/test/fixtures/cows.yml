@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  weight: 1
+  num_spots: 1
+  tipped: false
+  chocolate_milk: false
+  references: 
+
+two:
+  name: MyString
+  weight: 1
+  num_spots: 1
+  tipped: false
+  chocolate_milk: false
+  references: 
