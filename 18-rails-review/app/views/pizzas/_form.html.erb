@@ -1,0 +1,22 @@
+<%= form_for @pizza do |f| %>
+<!-- if our pizza failed validations, show the user some error messages that are coming from the .errors method -->
+  <% if @pizza.errors.any? %>
+    <% @pizza.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  <% end %>
+
+  <%= f.label :toppings %>
+  <%= f.text_field :toppings %>
+
+  <%= f.label :tasty %>
+  <%= f.check_box :tasty %>
+
+  <%= f.label :size %>
+  <%= f.text_field :size %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  <%= f.submit %>
+<% end %>

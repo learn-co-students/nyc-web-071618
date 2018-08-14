@@ -1,10 +1,11 @@
 <h1>Viewing Details for a Pizza</h1>
 
-<% if flash[:notice] %>
-  <h3><%= flash[:notice] %></h3>
-<% end %>
-
 <p>Toppings: <%= @pizza.toppings %></p>
 <p>Size: <%= @pizza.size %></p>
 <p>Tasty? <%= @pizza.tasty %></p>
 <p>Price: $<%= @pizza.price %></p>
+
+<!-- arguments: button content(as a string), WHICH ROUTE /pizzas/4, WHAT HTTP VERB? {method: :delete} -->
+<%= button_to("Destroy Ur Pizza", pizza_path(@pizza),  { method: :delete }) %>
+
+<%= link_to("Destroy Ur Pizza", pizza_path(@pizza),  { method: :delete }) %>
