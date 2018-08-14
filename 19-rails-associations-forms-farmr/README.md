@@ -194,3 +194,7 @@ end
 ---
 
 ![](https://media.giphy.com/media/A5pcWMMIEO95S/giphy.gif)
+
+
+### External Resources:
+- [Indexing in SQL](https://stackoverflow.com/questions/2955459/what-is-an-index-in-sql)
