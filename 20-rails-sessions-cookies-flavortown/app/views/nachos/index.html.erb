@@ -8,6 +8,10 @@
     <li>
       <%= link_to nacho.name, nacho %>
       $<%= nacho.price %>
+      <%=
+        button_to "Add To Cart"
+        # TODO: make this button work lol
+      %>
     </li>
   </ul>
 <% end %>

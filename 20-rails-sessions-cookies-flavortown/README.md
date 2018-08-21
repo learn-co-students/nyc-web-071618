@@ -31,11 +31,128 @@ session[:user_id] = @current_user.id
 User.find(session[:user_id])
 ```
 
+Basically, sessions allow us to store information that we may need across different HTTP requests. The session_id is sent along *with every single HTTP request our app makes.*
+
 ---
 We will be building out an e-commerce site where users can add nachos to their carts:
 
-From terminal: `rails g resource Nacho name description price:integer`
+`rails g resource Nacho name description price:integer`
 
+---
+## Nachos Controller
+
+```ruby
+# app/controllers/nachos_controller.rb
+class NachosController < ApplicationController
+  before_action :find_nacho, only: :show #only when show is called, find the nacho before proceeding
+
+  def index
+    @nachos = Nacho.all
+    render :index
+  end
+
+  def show
+    # before action find_nacho is called BEFORE anything happens in this method
+    render :show
+  end
+
+  private
+  def find_nacho
+    # this helper method will be used whenever accessing a url with a nacho id sent:
+    # /nachos/1
+    # /nachos/:id/edit
+    @nacho = Nacho.find(params[:id])
+  end
+end
+```
+
+```html
+<!-- app/views/nachos/index.html.erb -->
+<h1>Menu</h1>
+
+<h3><%= flash[:notice] %></h3>
+
+
+<% @nachos.map do |nacho| %>
+  <ul>
+    <li>
+      <%= link_to nacho.name, nacho %>
+      $<%= nacho.price %>
+      <%=
+        button_to "Add To Cart"
+        # TODO: make this button work lol
+      %>
+    </li>
+  </ul>
+<% end %>
+```
+
+```html
+<!-- app/views/nachos/show.html.erb -->
+<h1>Details for <%= @nacho.name %></h1>
+
+<p>Name: <%= @nacho.name %></p>
+
+<p>Price: $<%= @nacho.price %></p>
+
+<p>Description: <%= @nacho.description %></p>
+
+<%= link_to 'All Nachos', nachos_path %>
+
+```
+
+---
+I have a button that *should* allow my users to add a nacho to their cart. Therefore, I need a route that can handle this request:
+
+## Routes
+
+```ruby
+Rails.application.routes.draw do
+  resources :nachos, only: [:index, :show]
+  patch '/cart', to: 'cart#update', as: 'add_to_cart'
+end
+```
+---
+I now need to handle this patch request. HTTP requests are handled by controllers. I therefore need a *cart_controller*. Since my cart is not being stored in my database, I do not need a model or a view for this, just a controller to handle HTTP request related to my cart:
+
+## Cart Controller
+
+I also need to update my `button_to` so that it sends a patch request to my new URL:
+
+```html
+<!-- app/views/nachos/index.html.erb -->
+<h1>Menu</h1>
+
+<h3><%= flash[:notice] %></h3>
+
+
+<% @nachos.map do |nacho| %>
+  <ul>
+    <li>
+      <%= link_to nacho.name, nacho %>
+      $<%= nacho.price %>
+      <%=
+       button_to "Add To Cart",
+       add_to_cart_path,
+       method: :patch,
+       params: { nacho_id: nacho.id, name: nacho.name }
+     %>
+    </li>
+  </ul>
+<% end %>
+```
+
+
+```ruby
+class CartController < ApplicationController
+  def update
+    # using the session method I can add a single nacho to my cart
+    session[:nacho_id] = params[:nacho_id]
+  end
+end
+```
+
+This _works_ but isn't great. Since other controllers like my `NachosController` need to know about the data stored in the cart, I need to lift my cart logic up to the `ApplicationController`. Recall that *all controllers inherit from the ApplicationController* and therefore have access to methods
 
 ---
 
@@ -70,28 +187,14 @@ end
 
 ---
 
-## Cart Controller
+Now I can display the information in my cart to my users:
 
-```ruby
-class CartController < ApplicationController
-  def update
-    # i want a helper method somewhere that reads and writes to the session hash
-    # call method on ApplicationController that adds a nacho_id to my cart that is stored in the rails session hash
-    add_nacho_to_cart(params[:nacho_id])
-    flash[:notice] = "Successfully added #{params[:name]} to cart"
-    redirect_to nachos_path
-  end
-end
-```
-
----
-
-## Nachos Controller
+Finalized `NachosController`
 
 ```ruby
 class NachosController < ApplicationController
   before_action :find_nacho, only: :show
-  before_action :get_items_from_cart, only: :index
+  before_action :get_items_from_cart, only: :index #get items from cart comes from ApplicationController
 
   def index
     @nachos = Nacho.all
@@ -109,18 +212,48 @@ class NachosController < ApplicationController
 end
 ```
 
----
-
-## Routes
-
 ```ruby
-Rails.application.routes.draw do
-  resources :nachos, only: [:index, :show]
-  patch '/cart', to: 'cart#update', as: 'add_to_cart'
+class CartController < ApplicationController
+  def update
+    add_nacho_to_cart(params[:nacho_id])
+    flash[:notice] = "Successfully added #{params[:name]} to cart"
+    redirect_to nachos_path
+  end
 end
 ```
 
----
+And the corresponding view:
+
+```html
+<!-- app/views/nachos/index.html.erb -->
+<h1>Menu</h1>
+
+<h3><%= flash[:notice] %></h3>
+
+<h4>Your Cart: </h4>
+<ol>
+  <% @cart_items.each do |cart_item| %>
+    <li><%= cart_item.name %></li>
+  <% end %>
+</ol>
+
+<hr>
+
+<% @nachos.map do |nacho| %>
+  <ul>
+    <li>
+      <%= link_to nacho.name, nacho %>
+      $<%= nacho.price %>
+      <%=
+        button_to "Add To Cart",
+        add_to_cart_path,
+        method: :patch,
+        params: { nacho_id: nacho.id, name: nacho.name }
+      %>
+    </li>
+  </ul>
+<% end %>
+```
 
 ![](https://media.giphy.com/media/Vxk8eYR1fV0Qw/giphy.gif)
 
