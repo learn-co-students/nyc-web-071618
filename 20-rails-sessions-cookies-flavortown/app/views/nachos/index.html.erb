@@ -1,0 +1,13 @@
+<h1>Menu</h1>
+
+<h3><%= flash[:notice] %></h3>
+
+
+<% @nachos.map do |nacho| %>
+  <ul>
+    <li>
+      <%= link_to nacho.name, nacho %>
+      $<%= nacho.price %>
+    </li>
+  </ul>
+<% end %>
