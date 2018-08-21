@@ -1,6 +1,6 @@
 # Sessions and Cookies in R A I L S
 
-![](https://media.giphy.com/media/p8fgbnLzWWtEI/giphy.gif)
+![](https://camo.githubusercontent.com/e03d1410921dec48c918ea66245f90b9dd50488e/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f484765347a734f566f374a76792f67697068792e676966)
 
 # What are Sessions?
 
