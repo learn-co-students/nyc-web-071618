@@ -14,8 +14,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       flash[:notice] = "Signup successful! Welcome, #{@user.username}"
-      session[:logged_in_user_id] = @user.id
-      redirect_to profile_path
+      redirect_to user_path(@user)
     else
       render :new
     end
@@ -28,7 +27,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:notice] = "Successfully updated profile"
-      redirect_to profile_path
+      redirect_to @user
     else
       render :edit
     end
