@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, only: [:new, :create, :show]
+  before_action :find_user, only: [:show]
 
   def show
+    render :show
+  end
+
+  def profile
     render :show
   end
 
@@ -14,6 +19,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       flash[:notice] = "Signup successful! Welcome, #{@user.username}"
+      session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
       render :new

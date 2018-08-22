@@ -15,4 +15,6 @@
 </ol>
 
 <hr>
-<%= button_to "Delete Account", @user, method: :delete %>
+<% if @user == current_user %>
+  <%= button_to "Delete Account", @user, method: :delete %>
+<% end %>
