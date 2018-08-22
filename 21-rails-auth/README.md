@@ -130,7 +130,7 @@ end
 
 def create
   # no strong params cause there is no mass assignment
-  user = User.find_by(username: params[:username])
+  @user = User.find_by(username: params[:username])
   if @user && @user.authenticate(params[:password])
     redirect_to @user
   else
