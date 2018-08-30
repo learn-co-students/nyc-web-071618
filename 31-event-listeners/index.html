@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pets is Cute!</title>
+    <script type="text/javascript" src="index.js" ></script>
+    
+  </head>
+  <body>
+    <div class="headline" id="headline"> Pets Is Cute! </div>
+
+    <form class="petInputForm" id="petInputForm">
+      <fieldset><legend> Log a new Pet! </legend>
+        <label>Pet Name
+        <input type="text" id="petName" name="petName" value=""> </label>
+        <br />
+
+        <label>Pet Image
+        <input type="text" id="petImage"  name="petImage" value=""> </label>
+        <br />
+
+        <input type="submit">
+      </fieldset>
+    </form>
+
+
+    <div class="cardContainer" id="cardContainer">
+      <div class="petCard" id="evie">
+        <div class="remove" id="removeEvie">X</div>
+        <h3> Evie! </h3>
+        <img class="petImage" src="https://s3.amazonaws.com/doggos-js-lecture/Evie.png" id="evie" alt="Evie!">
+      </div>
+
+      <div class="petCard" id="petCard">
+        <div class="remove" id="remove">X</div>
+        <h3> Boba! </h3>
+        <img class="petImage" src="https://s3.amazonaws.com/doggos-js-lecture/Boba.jpg" id="boba" alt="Boba!">
+      </div>
+
+      <div class="petCard" id="petCard">
+        <div class="remove" id="remove">X</div>
+        <h3> Leah! </h3>
+        <img class="petImage" src="https://s3.amazonaws.com/doggos-js-lecture/Leah.jpg" id="leah" alt="Leah!">
+      </div>
+    </div>
+
+
+  </body>
+  <link rel="stylesheet" href="index.css">
+</html>
