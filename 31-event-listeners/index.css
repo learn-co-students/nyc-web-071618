@@ -1,0 +1,56 @@
+body {
+  background-color: RGB(150,150,150)
+}
+
+.cardContainer {
+  display: flex;
+  border: solid;
+}
+
+.headline {
+  text-align: center;
+  font-size: 4em;
+  color: RGB(255,50,50);
+  border-radius: 20px;
+  border: solid;
+  border-color: RGB(150,50,50);
+  width: 80%;
+  margin: auto;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.petCard {
+  color: RGB(255,50,50);
+  border-radius: 20px;
+  border: solid;
+  border-color: RGB(150,50,50);
+  width: 20%;
+  height: 400px;
+  margin: auto;
+  background-color: white;
+  padding: 10px;
+  margin-top: 10px;
+  box-shadow: -4px 8px RGB(120,120,120)
+}
+
+.petImage {
+  max-width: 70%;
+  max-height: 300px;
+}
+
+.petInputForm {
+  max-width: 30%;
+  margin:auto;
+  background: RGBa(150,150,255,0.6);
+  color: black;
+  padding: 10px;
+}
+
+.remove {
+  float:right;
+}
+
+.remove:hover {
+  cursor: pointer;
+}
