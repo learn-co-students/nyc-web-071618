@@ -1,9 +1,9 @@
-window.addEventListener('DOMContentLoaded', () => {
+// window.addEventListener('DOMContentLoaded', () => {
   let header = document.getElementById('header')
   let paragraph = document.getElementById('paragraph')
   let text = "he is a true American"
 
-  header.addEventListener('click', () => {
+  document.addEventListener('click', (event) => {
     paragraph.innerText += text
   })
-})
+// })
