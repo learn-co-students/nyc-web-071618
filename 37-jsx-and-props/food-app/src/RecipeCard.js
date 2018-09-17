@@ -20,6 +20,8 @@ export default class RecipeCard extends Component {
 
   increaseLikes = () => {
     console.log(`before: ${this.state.likes}`)
+    // setState allows for rerendering to show dynamic changes
+    // never directly mutate state (e.g. this.state.likes++)
     this.setState({
       likes: this.state.likes + 1
     }, () => {
