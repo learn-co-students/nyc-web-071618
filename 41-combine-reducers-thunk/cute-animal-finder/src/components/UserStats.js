@@ -27,8 +27,9 @@ const UserStats = ({ users }) => {
 }
 
 function mapStateToProps(state) {
+  console.log('state insude of mapStateToProps', state);
   return {
-    users: state.users
+    users: state.user.users
   }
 }
 

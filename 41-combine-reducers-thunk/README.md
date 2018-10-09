@@ -3,10 +3,10 @@ Redux combineReducers & Thunk
 
 ## Outline
 
-- [ ] multiple reducers
-- [ ] async redux
-- [ ] redux thunk
-- [ ] middleware
+- [x] multiple reducers
+- [x] async redux
+- [x] redux thunk
+- [x] middleware
 
 ## SWBAT
 

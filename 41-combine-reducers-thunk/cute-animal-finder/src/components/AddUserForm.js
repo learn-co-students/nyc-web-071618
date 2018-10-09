@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
  import { connect } from 'react-redux';
- import { addUserAction } from '../redux/actions';
+ // import { addUserAction } from '../redux/actions';
+ import * as actions from '../redux/actions';
 
  class AddUserForm extends Component {
    state = {
@@ -15,7 +16,18 @@ import React, { Component } from 'react';
 
    handleSubmit = (event) => {
      event.preventDefault();
-
+     // console.log(this.props);
+     // this.props.dispatch(
+     //   {
+     //     type: "ADD_USER",
+     //     payload: { id: 1,
+     //       name: this.state.name,
+     //       email: this.state.email,
+     //       animalPreference: this.state.animalPreference }
+     //   }
+     //
+     // )
+     // this.props.dispatch(addUserAction(this.state.name, this.state.email, this.state.animalPreference))
      this.props.addUser(this.state.name, this.state.email, this.state.animalPreference);
    }
 
@@ -37,10 +49,10 @@ import React, { Component } from 'react';
    }
  }
 
- function mapDispatchToProps(dispatch) {
-   return {
-     addUser: (name, email, animalPreference) => dispatch(addUserAction(name, email, animalPreference))
-   }
- }
+ // function mapDispatchToProps(dispatch) {
+ //   return {
+ //     addUser: (name, email, animalPreference) => dispatch(addUserAction(name, email, animalPreference))
+ //   }
+ // }
 
- export default connect(null, mapDispatchToProps)(AddUserForm);
+ export default connect(null, actions)(AddUserForm);

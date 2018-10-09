@@ -26,8 +26,9 @@ const UserList = ({ users }) => {
 
 function mapStateToProps(state) {
   return {
-    users: state.users
+    users: state.user.users
   }
 }
 
+// connect is a Higher Order Function that returns Higher Order Component
 export default connect(mapStateToProps)(UserList);
