@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import * as actions from '../actions'
+// import * as actions from '../actions'
+import { fetchCurrentUser } from '../actions/user'
 import { Loader } from 'semantic-ui-react'
 
 const withAuth = /*FUNCTION*/ (WrappedComponent) => {
@@ -36,17 +37,17 @@ const withAuth = /*FUNCTION*/ (WrappedComponent) => {
 
   const mapDispatchToProps = /*FUNCTION*/ (dispatch) => {
     return {
-      fetchCurrentUser: () => dispatch(actions.fetchCurrentUser()), //dispatch is automagically provided by redux
+      fetchCurrentUser: () => dispatch(fetchCurrentUser()), //dispatch is automagically provided by redux
     }
   }
-
+  //
   // const connectedToReduxHOC = connect(mapStateToProps, mapDispatchToProps)
   // const connectedAuthorizedComponent = connectedToReduxHOC(AuthorizedComponent)
   // return connectedAuthorizedComponent
 
   return connect(
     mapStateToProps,
-    actions
+    { fetchCurrentUser }
   )(AuthorizedComponent)
 }
 
