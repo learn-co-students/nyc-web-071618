@@ -4,6 +4,7 @@ export const /*FUNCTION*/ loginUser = (username, password) => {
     dispatch({ type: 'AUTHENTICATING_USER' })
     // fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`)
     // adapter.loginUser(username, password)
+    // http://localhost:3000
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, { //TODO: move this to an adapter
       method: 'POST',
       headers: {
@@ -24,7 +25,10 @@ export const /*FUNCTION*/ loginUser = (username, password) => {
           throw response
         }
       })
-      // {user: { username: 'chandler bing', bio: ''}, jwt: 'aaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccc'}
+      /* { user:
+        { username: 'chandler bing', bio: '', avatar: ''},
+        jwt: 'aaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccc'
+      } */
       .then(JSONResponse => {
         console.log('%c INSIDE YE OLDE .THEN', 'color: navy')
         localStorage.setItem('jwt', JSONResponse.jwt)

@@ -15,7 +15,7 @@ class LoginForm extends React.Component {
   }
 
   handleLoginSubmit = () => { //semantic forms preventDefault for you
-    this.props.loginUser(this.state.username, this.state.password)
+    this.props.loginUser(this.state.username, this.state.password) //comes from mapDispatchToProps
     this.setState({ username: '', password: '' }) //reset form to initial state
   }
 
@@ -94,4 +94,4 @@ const mapStateToProps = ({ usersReducer: { authenticatingUser, failedLogin, erro
 // export default connectedToReduxHOCWithRouterLoginForm
 
 
-export default connect(mapStateToProps, { loginUser })(LoginForm)
+export default withRouter(connect(mapStateToProps, { loginUser })(LoginForm))
